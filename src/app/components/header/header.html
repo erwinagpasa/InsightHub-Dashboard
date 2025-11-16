@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="user-info">
+    <div class="avatar">M</div>
+    <div>
+      <h2 class="greeting">Hey, {{ userName }}</h2>
+      <p class="date">{{ currentDate }}</p>
+    </div>
+  </div>
+
+  <div class="header-actions">
+    <div class="search-container bg-white">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Start searching here..." class="search-input" />
+    </div>
+    <button class="icon-button">⚙️</button>
+    <button class="icon-button">🔔</button>
+    <button class="mobile-menu-btn" (click)="onMenuClick()">☰</button>
+  </div>
+</header>

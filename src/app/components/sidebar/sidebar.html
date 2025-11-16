@@ -1,0 +1,48 @@
+<!-- Mobile Overlay -->
+@if (isOpen()) {
+  <div class="sidebar-overlay" (click)="closeSidebar()"></div>
+}
+
+<aside class="sidebar" [class.open]="isOpen()">
+  <!-- Logo -->
+  <div class="logo-container">
+    <div class="logo">⚙️</div>
+    <h1 class="logo-text">InsightHub</h1>
+    <button class="close-btn" (click)="closeSidebar()">×</button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-container">
+    <p class="nav-label">Dashboard</p>
+
+    @for (item of menuItems(); track item.label) {
+      <div class="menu-item-wrapper">
+        <button
+          class="menu-item"
+          [class.active]="item.active"
+          (click)="toggleExpanded(item)">
+          <span class="menu-icon">{{ item.icon }}</span>
+          <span class="menu-label">{{ item.label }}</span>
+          @if (item.badge) {
+            <span class="badge">{{ item.badge }}</span>
+          }
+          @if (item.children) {
+            <span class="chevron">›</span>
+          }
+        </button>
+
+        <!-- Submenu -->
+        @if (item.children && item.expanded) {
+          <div class="submenu">
+            @for (child of item.children; track child.label) {
+              <button class="submenu-item">
+                <span class="submenu-icon">{{ child.icon }}</span>
+                <span class="submenu-label">{{ child.label }}</span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    }
+  </nav>
+</aside>

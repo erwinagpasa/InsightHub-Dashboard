@@ -1,0 +1,31 @@
+<div class="task-item">
+  <div class="task-header">
+    <div class="task-icon-name">
+      <div class="task-icon">{{ task().icon }}</div>
+      <div>
+        <h4 class="task-name">{{ task().name }}</h4>
+        <p class="task-description">{{ task().description }}</p>
+      </div>
+    </div>
+    <div class="team-members">
+      @for (member of task().teamMembers; track member) {
+        <div class="member-avatar">{{ member }}</div>
+      }
+    </div>
+  </div>
+
+  <div class="task-details">
+    <div class="detail-item">
+      <span class="detail-label">Status</span>
+      <span class="detail-value">{{ task().status }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">Procentation</span>
+      <span class="detail-value">{{ task().procentation }}%</span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">Due Date</span>
+      <span class="detail-value">{{ task().dueDate }}</span>
+    </div>
+  </div>
+</div>

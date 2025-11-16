@@ -1,0 +1,26 @@
+<div class="performance-card">
+  <div class="performance-header">
+    <div class="performance-title-group">
+      <span class="performance-icon">⭐</span>
+      <h3 class="performance-title">Top Performance</h3>
+    </div>
+    <div class="performance-controls">
+      <select class="month-select">
+        <option>Augustus</option>
+      </select>
+      <button class="download-btn">⬇</button>
+    </div>
+  </div>
+
+  <p class="performance-subtitle">Best performing employee ranking.</p>
+
+  <div class="performers-grid">
+    @for (performer of performers; track performer.name) {
+      <div class="performer-card">
+        <div class="performer-avatar">{{ performer.initial }}</div>
+        <span class="performer-rank">{{ performer.rank }}</span>
+        <span class="performer-name">{{ performer.name }}</span>
+      </div>
+    }
+  </div>
+</div>

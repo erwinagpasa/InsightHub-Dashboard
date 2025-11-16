@@ -1,0 +1,42 @@
+<div class="chart-card">
+  <div class="chart-header">
+    <div class="chart-title-group">
+      <span class="chart-icon">📊</span>
+      <h3 class="chart-title">Graphs and Analysis</h3>
+    </div>
+    <div class="chart-controls">
+      <select class="month-select">
+        <option>Month</option>
+      </select>
+      <button class="download-btn">⬇</button>
+    </div>
+  </div>
+
+  <p class="chart-subtitle">Projects completed per month based on trends.</p>
+
+  <div class="chart-container">
+    @for (month of months; track month; let i = $index) {
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar" [style.height.%]="data[i]"></div>
+        </div>
+        <span class="bar-label">{{ month }}</span>
+      </div>
+    }
+  </div>
+
+  <div class="chart-legend">
+    <div class="legend-item">
+      <span class="legend-color" style="background: #1e293b;"></span>
+      <span class="legend-text">Project Done: 137</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background: #3b82f6;"></span>
+      <span class="legend-text">Project Task: 123</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background: #60a5fa;"></span>
+      <span class="legend-text">Project Goal: 84</span>
+    </div>
+  </div>
+</div>
