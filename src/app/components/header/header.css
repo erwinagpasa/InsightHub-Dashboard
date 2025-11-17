@@ -1,10 +1,15 @@
 .header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 260px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 32px;
-  /* background: white; */
-  margin-bottom: 24px;
+  background: white;
+  z-index: 100;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .user-info {
@@ -113,8 +118,8 @@
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .header {
+    left: 0;
     padding: 20px;
-    margin-left: 0;
   }
 
   .mobile-menu-btn {

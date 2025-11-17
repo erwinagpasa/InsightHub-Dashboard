@@ -10,7 +10,7 @@ This is an Angular 20 dashboard application using standalone components (no NgMo
 
 - **Angular 20.3**: Modern Angular with standalone components
 - **Zoneless Change Detection**: Uses `provideZonelessChangeDetection()` instead of Zone.js
-- **Signals**: Primary reactive primitive (see `App` component's `title` signal)
+- **Signals**: Primary reactive primitive for reactive state management
 - **Tailwind CSS v4**: Configured via PostCSS with `@tailwindcss/postcss` plugin
 - **TypeScript 5.9**: Strict mode enabled with comprehensive compiler checks
 - **Karma + Jasmine**: Unit testing framework
@@ -56,9 +56,13 @@ ng generate --help
 
 ### Component Structure
 
+- **Location**: Components are organized in `src/app/components/` directory by feature
 - **Standalone components only**: All components use `imports` array instead of NgModules
+- **Naming convention**: Component classes use simple names without "Component" suffix (e.g., `App`, `Sidebar`, `Header` instead of `AppComponent`, `SidebarComponent`)
 - **Template/style separation**: Components use separate `.html` and `.css` files (e.g., `app.html`, `app.css`)
 - **Signal-based state**: Prefer signals over traditional observables for reactive state
+- **Component references**: Use `viewChild.required()` for type-safe component queries (see `App` component's sidebar reference)
+- **Type definitions**: Define interfaces for component data structures locally within component files (e.g., `MenuItem` in `sidebar.ts`, `Task` in `task-item.ts`)
 
 ### Routing
 
@@ -98,18 +102,26 @@ Prettier is configured in `package.json`:
 
 Components should follow this pattern:
 ```typescript
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-example',
-  imports: [], // Add standalone component/directive/pipe imports here
+  imports: [CommonModule], // Add standalone component/directive/pipe imports here
   templateUrl: './example.html',
   styleUrl: './example.css'
 })
 export class Example {
   // Use signals for reactive state
+  protected readonly exampleState = signal('initial value');
 }
 ```
+
+**Key conventions:**
+- Class names without "Component" suffix (e.g., `Example` not `ExampleComponent`)
+- Use `protected readonly` for signals that should be accessible in templates but not modified from outside
+- Import `CommonModule` when using common directives like `*ngIf`, `*ngFor`
+- Component folder structure: `components/example/example.ts`, `components/example/example.html`, `components/example/example.css`
 
 ### Zoneless Change Detection
 

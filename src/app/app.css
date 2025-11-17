@@ -17,7 +17,7 @@
 }
 
 .content-wrapper {
-  padding: 0 32px 32px 32px;
+  padding: 96px 32px 32px 32px;
 }
 
 .stats-grid {
@@ -46,7 +46,7 @@
   }
 
   .content-wrapper {
-    padding: 0 20px 20px 20px;
+    padding: 80px 20px 20px 20px;
   }
 
   .dashboard-grid {
@@ -60,7 +60,7 @@
   }
 
   .content-wrapper {
-    padding: 0 16px 16px 16px;
+    padding: 140px 16px 16px 16px;
   }
 }
 
